@@ -27,6 +27,7 @@ export default class App {
     };
 
     var game = new Phaser.Game(config);
+    var player;
 
     function preload() {
       this.load.image("sky", "assets/sky.png");
@@ -41,11 +42,9 @@ export default class App {
 
     function create() {
       // Background
-
       this.add.image(frame.width / 2, frame.height / 2, "sky");
 
       // Platform
-
       var platforms = this.physics.add.staticGroup();
 
       platforms.create(400, 568, "ground").setScale(2).refreshBody();
@@ -55,8 +54,7 @@ export default class App {
       platforms.create(750, 220, "ground");
 
       // Player
-
-      var player = this.physics.add.sprite(100, 450, "dude");
+      player = this.physics.add.sprite(100, 450, "dude");
 
       player.setBounce(0.2);
       player.setCollideWorldBounds(true);
